@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BigZ509/real2sim/schemas/run_result.schema.json",
+  "title": "Real2Sim Run Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "scenario_id", "status", "metrics", "completion_time_s", "simulation_seed", "parameters"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "scenario_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PASS", "FAIL"]},
+    "failure_reason": {"enum": ["collision", "timeout", "controller_error", "other"]},
+    "metrics": {"type": "object", "additionalProperties": {"type": "number"}, "required": ["distance_traveled_m", "minimum_obstacle_clearance_m"]},
+    "completion_time_s": {"type": "number", "minimum": 0},
+    "simulation_seed": {"type": "integer", "minimum": 0},
+    "parameters": {"type": "object", "additionalProperties": true}
+  },
+  "allOf": [{"if": {"properties": {"status": {"const": "FAIL"}}, "required": ["status"]}, "then": {"required": ["failure_reason"]}}]
+}

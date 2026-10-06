@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BigZ509/real2sim/schemas/failure_bundle.schema.json",
+  "title": "Real2Sim Failure Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["failure_id", "timestamp", "failure_type", "robot_pose", "robot_velocity", "commands", "sensor_data", "snapshot_reference"],
+  "properties": {
+    "failure_id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "failure_type": {"type": "string", "minLength": 1},
+    "robot_pose": {"type": "object", "additionalProperties": false, "required": ["x_m", "y_m", "yaw_rad"], "properties": {"x_m": {"type": "number"}, "y_m": {"type": "number"}, "yaw_rad": {"type": "number"}}},
+    "robot_velocity": {"type": "object", "additionalProperties": false, "required": ["linear_mps", "angular_radps"], "properties": {"linear_mps": {"type": "number"}, "angular_radps": {"type": "number"}}},
+    "commands": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["timestamp", "linear_mps", "angular_radps"], "properties": {"timestamp": {"type": "string", "format": "date-time"}, "linear_mps": {"type": "number"}, "angular_radps": {"type": "number"}}}},
+    "sensor_data": {"type": "object", "additionalProperties": true, "required": ["frame_id"]},
+    "snapshot_reference": {"type": "object", "additionalProperties": false, "required": ["camera", "depth"], "properties": {"camera": {"type": "string"}, "depth": {"type": "string"}}}
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "run_id": "run-001", "scenario_id": "tabletop-collision-001", "status": "FAIL", "failure_reason": "collision",
+  "metrics": {"distance_traveled_m": 0.76, "minimum_obstacle_clearance_m": 0.0, "collision_count": 1},
+  "completion_time_s": 4.2, "simulation_seed": 42,
+  "parameters": {"initial_x_offset_m": 0.03, "speed_scale": 1.0, "sensor_noise": 0.02}
+}

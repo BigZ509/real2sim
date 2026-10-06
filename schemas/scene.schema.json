@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/BigZ509/real2sim/schemas/scene.schema.json",
+  "title": "Real2Sim Scene",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scenario_id", "robot", "obstacles", "source", "confidence"],
+  "properties": {
+    "scenario_id": {"type": "string", "minLength": 1},
+    "robot": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pose", "speed_mps", "dimensions_m"],
+      "properties": {
+        "pose": {"$ref": "#/$defs/pose"},
+        "speed_mps": {"type": "number", "minimum": 0},
+        "dimensions_m": {"$ref": "#/$defs/dimensions"}
+      }
+    },
+    "obstacles": {"type": "array", "items": {"$ref": "#/$defs/obstacle"}},
+    "environment": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "lighting": {"type": "string"},
+        "sensor_noise": {"type": "number", "minimum": 0}
+      }
+    },
+    "source": {"type": "object", "additionalProperties": false, "required": ["capture_id", "captured_at", "frame_id"], "properties": {"capture_id": {"type": "string"}, "captured_at": {"type": "string", "format": "date-time"}, "frame_id": {"type": "string"}}},
+    "confidence": {"type": "object", "additionalProperties": false, "required": ["pose", "obstacles"], "properties": {"pose": {"type": "number", "minimum": 0, "maximum": 1}, "obstacles": {"type": "number", "minimum": 0, "maximum": 1}}}
+  },
+  "$defs": {
+    "pose": {"type": "object", "additionalProperties": false, "required": ["x_m", "y_m", "yaw_rad"], "properties": {"x_m": {"type": "number"}, "y_m": {"type": "number"}, "yaw_rad": {"type": "number"}}},
+    "dimensions": {"type": "object", "additionalProperties": false, "required": ["width_m", "depth_m", "height_m"], "properties": {"width_m": {"type": "number", "exclusiveMinimum": 0}, "depth_m": {"type": "number", "exclusiveMinimum": 0}, "height_m": {"type": "number", "exclusiveMinimum": 0}}},
+    "obstacle": {"type": "object", "additionalProperties": false, "required": ["id", "x_m", "y_m", "width_m", "depth_m"], "properties": {"id": {"type": "string"}, "x_m": {"type": "number"}, "y_m": {"type": "number"}, "width_m": {"type": "number", "exclusiveMinimum": 0}, "depth_m": {"type": "number", "exclusiveMinimum": 0}, "height_m": {"type": "number", "exclusiveMinimum": 0}}}
+  }
+}

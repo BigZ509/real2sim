@@ -1,0 +1,8 @@
+{
+  "scenario_id": "tabletop-collision-001",
+  "robot": {"pose": {"x_m": 0.2, "y_m": 0.1, "yaw_rad": 0.0}, "speed_mps": 0.35, "dimensions_m": {"width_m": 0.18, "depth_m": 0.22, "height_m": 0.12}},
+  "obstacles": [{"id": "wooden-block-1", "x_m": 1.0, "y_m": 0.1, "width_m": 0.2, "depth_m": 0.15, "height_m": 0.1}],
+  "environment": {"lighting": "indoor-even", "sensor_noise": 0.02},
+  "source": {"capture_id": "capture-2026-10-05-001", "captured_at": "2026-10-05T14:30:00Z", "frame_id": "table_frame"},
+  "confidence": {"pose": 0.94, "obstacles": 0.88}
+}

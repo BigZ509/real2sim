@@ -1,0 +1,8 @@
+{
+  "failure_id": "failure-001", "timestamp": "2026-10-05T14:30:04Z", "failure_type": "collision",
+  "robot_pose": {"x_m": 0.96, "y_m": 0.1, "yaw_rad": 0.01},
+  "robot_velocity": {"linear_mps": 0.31, "angular_radps": 0.02},
+  "commands": [{"timestamp": "2026-10-05T14:30:03Z", "linear_mps": 0.35, "angular_radps": 0.0}],
+  "sensor_data": {"frame_id": "base_link", "lidar_min_range_m": 0.04, "odometry_age_ms": 12},
+  "snapshot_reference": {"camera": "captures/failure-001-rgb.png", "depth": "captures/failure-001-depth.png"}
+}
